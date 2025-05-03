@@ -1,0 +1,350 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hero Slider with Dropdown Navbar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .slider {
+      transition: transform 0.6s ease-in-out;
+    }
+    @keyframes fade-in {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fade-in 1s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 scroll-smooth">
+
+ <!-- Navbar -->
+ <nav id="navbar" class="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="hey.html"><img src="logo-light.png" alt="" class="w-40"></a>
+      <div class="hidden md:flex space-x-6 items-center text-white" id="navLinks">
+        <a href="#" class=" animate-fade-in font-bold text-orange-600 hover:text-white-600">Home</a>
+        <a href="#" class=" animate-fade-in font-bold hover:text-blue-600">About Us</a>
+
+        <!-- Dropdown - Services -->
+        <div class="relative group">
+          <button class=" animate-fade-in font-bold hover:text-blue-600 flex items-center space-x-1">
+            <span>Our Services</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="absolute animate-fade-in mt-10 hidden group-hover:block bg-white border rounded shadow-md w-60 text-gray-800">
+            <a href="#services" class="block px-4 py-2 hover:bg-gray-100">Founders Space</a>
+            <a href="#services" class="block px-4 py-2 hover:bg-gray-100">Inovation Consulting</a>
+          </div>
+        </div>
+
+        <!-- Dropdown - Program -->
+        <div class="relative group">
+          <button class=" animate-fade-in font-bold hover:text-blue-600 flex items-center space-x-1">
+            <span>Program</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="absolute animate-fade-in left-0 mt-10 hidden group-hover:block bg-white border rounded shadow-md w-60 text-gray-800">
+            <a href="#program" class="block px-4 py-2 hover:bg-gray-100">Founders Insights</a>
+            <a href="#program" class="block px-4 py-2 hover:bg-gray-100">Founders Pitch</a>
+            <a href="#program" class="block px-4 py-2 hover:bg-gray-100">Founders Hatch</a>
+            <a href="#program" class="block px-4 py-2 hover:bg-gray-100">Founders School</a>
+          </div>
+        </div>
+
+        <!-- Dropdown - Community -->
+        <div class="relative group">
+          <button class=" animate-fade-in font-bold hover:text-blue-600 flex items-center space-x-1">
+            <span>Community</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="absolute animate-fade-in left-0 mt-10 hidden group-hover:block bg-white border rounded shadow-md w-60 text-gray-800">
+            <a href="#program" class="block px-4 py-2 hover:bg-gray-100">Founders Network</a>
+            <a href="#program" class="block px-4 py-2 hover:bg-gray-100">Founders Update</a>
+            
+          </div>
+        </div>
+
+        <a href="#contact" class="animate-fade-in font-bold hover:text-blue-600">Contact Us</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="menuBtn" class="focus:outline-none text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 space-y-2 bg-white text-gray-800">
+      <a href="#" class="block hover:text-blue-600">Home</a>
+      <a href="#" class="block hover:text-blue-600">About Us</a>
+      <a href="#services" class="block hover:text-blue-600">Services</a>
+      <a href="#program" class="block hover:text-blue-600">Program</a>
+      <a href="#community" class="block hover:text-blue-600">Community</a>
+      <a href="#contact" class="block hover:text-blue-600">Contact Us</a>
+    </div>
+</nav>
+  
+
+<!--  HERO SLIDER -->
+<section class="relative">
+  <div class="relative overflow-hidden w-full h-screen">
+    <div id="slider" class="flex slider w-full h-full">
+      <!-- Slide 1 -->
+      <div class="min-w-full h-full relative">
+        <img src="Free digital marketing course with iHub.jpg" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center space-y-4">
+          <h3 class="text-white text-ll md:text-xl font-bold animate-fade-in">Connect, Innovate, Impact.</h3>
+          <h2 class="text-white max-w-xl text-4xl md:text-6xl font-bold animate-fade-in">Building Innovation & Purpose-Driven Businesses!</h2>
+          <a href="#services" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-l text-lg transition">Apply Now</a>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="min-w-full h-full relative">
+        <img src="group-afro-americans-working-together.jpg" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center space-y-4">
+          <h3 class="text-white text-ll md:text-xl font-bold animate-fade-in">Connect, Innovate, Impact.</h3>
+          <h2 class="text-white max-w-xl text-4xl md:text-6xl font-bold animate-fade-in">A Community of Entrepreneurs, Leaders and Game Changers.</h2>
+          <a href="#services" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-l text-lg transition">Get In Touch</a>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      
+    </div>
+
+    <!-- Controls -->
+    <button id="prevBtn" class="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black/40 hover:bg-black/70 px-3 py-2 rounded-full">❮</button>
+    <button id="nextBtn" class="absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-black/40 hover:bg-black/70 px-3 py-2 rounded-full">❯</button>
+
+    <!-- Dots -->
+    <div class="absolute bottom-6 w-full flex justify-center space-x-3">
+      <span class="dot w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100 cursor-pointer" data-slide="0"></span>
+      <span class="dot w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100 cursor-pointer" data-slide="1"></span>
+    </div>
+  </div>
+</section>
+
+<div class="flex p-20 gap-20">
+  <div class="leading-8">
+    <p class="font-sans font-semibold text-blue-600">Building successful home-grown companies.</p>
+    <h1 class="font-serif text-orange-600 text-4xl font-bold">Committed To Building a More Sustainable And Inclusive Economy For The Future </h1>
+    <p class="font-sans font-semibold">You have an idea and struggling to know what to do next, you tried to attend various workshops, events, conferences and still not very clear what to do next. Are you a founder and want to understand your adjacent or new customers better so that you can build new products or services that will serve their needs better.
+      Get in touch to access leading resources for founders, mentorship, hands-on and well curated learning experience with standard frameworks, fundraising, advisory support, networking, events, careers, consulting etc.
+      The world is changing faster than ever before, Founders Hub NG is also investing and intensifying efforts at building our community amidst digital transformation and for the future of work.
+    </p>
+  </div>
+  <div class="">
+    <img src="african-american-businesswoman-sitting-table-cafe-black-girl-working-with-laptop.jpg" alt="">
+  </div>
+</div>
+
+<div class="w-100 bg-gradient-to-r from-blue-800 to-orange-800 overflow-hidden">
+  <marquee behavior="scroll" direction="left">
+    <div class="whitespace-nowrap animate-marquee text-white py-3 text-lg font-semibold">
+      <p class="inline-block mx-10">✅ Design, Innovation & Incubation</p>
+      <p class="inline-block mx-10">🚀 Development of Early Stage Startups</p>
+      <p class="inline-block mx-10">📣 Co-working and Flexible Workspaces</p>
+      <p class="inline-block mx-10">📣 Commercialisation & Acceleration</p>
+      <p class="inline-block mx-10">🌟 Community - Mentoring & Networks</p>
+      <p class="inline-block mx-10">🚀 Fund Raising</p>
+    </div>
+  </marquee>
+</div>
+
+<div class="pt-20">
+  <p class="font-sans font-semibold text-blue-600 text-center">The Premier Innovation Hub in Ilorin</p>
+  <h1 class="font-serif text-orange-600 text-4xl font-bold text-center pl-80 pr-80">For startups & entrepreneurs looking for a flexible place to start their tech business in the heart of Ilorin!</h1>
+</div>
+
+<div class="flex justify-center items-center p-20 gap-10">
+  <div class="bg-blue-100 shadow-xl cursor-pointer w-120 h-50 p-10 leading-8 transition delay-100 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:white-500 hover:rounded-xl">
+    <img src="location_city_24dp_0000F5_FILL0_wght400_GRAD0_opsz24.png" alt="" width="">
+    <h1 class="font-bold text-xl">Virtual Office Space</h1>
+    <p class="font-sans text-lg">Our co-working space gives you a head start and ensure you get your name out there. </p>
+    <button class=" p-2 rounded-xl font-bold"><a href="#">Read More</a></button>
+  </div>
+
+  <div class="bg-blue-100 shadow-xl w-100 h-50 p-10 leading-8 transition delay-100 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:white-500 hover:rounded-xl">
+    <img src="satellite_alt_24dp_0000F5_FILL0_wght400_GRAD0_opsz24.png" alt="">
+    <h1 class="font-bold text-xl ">Wiki Lite Open Space</h1>
+    <p class="font-sans text-lg">Got a great idea you want to see realised? Everything you need is under one roof. </p>
+    <button class=" p-2 rounded-xl font-bold "><a href="#">Read More</a></button>
+   
+  </div>
+
+  <div class="bg-blue-100 shadow-xl w-100 h-50 p-10 leading-8 transition delay-100 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:white-500 hover:rounded-xl">
+    <img src="network_intel_node_24dp_0000F5_FILL0_wght400_GRAD0_opsz24.png" alt="">
+    <h1 class="font-bold text-xl ">Wiki (Open Office)</h1>
+    <p class="font-sans text-lg">We offer a nurturing and supportive space that encourages collaboration from which  to grow. </p>
+    <button class=" p-2 rounded-xl font-bold"><a href="#">Read More</a></button>
+   
+  </div>
+</div>
+
+<!-- <div>
+  <p>5 Years of Experince</p>
+  <h1>We Are Building On Our Past And Prepared For The Future.</h1>
+  <p>The hub is an active nexus where tech ecosystem players converge. Our strong network focuses on offering a unique ecosystem where resources, inspiration and collaboration opportunities intersect with emerging technologies, creating shared value and building viable globally-oriented businesses in Africa!</p>
+</div> -->
+
+<!-- <div class="flex justify-evenly">
+  <div>
+    <div class="flex">
+      <div class="bg-orange-500 h-8 w-8 text-center hover:bg-blue-500">
+        <a href="#"><img src="call_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="" ></a>
+      </div>
+      <div>
+        <p>Call Us: <br>+234 817 129 9361</p>
+      </div>
+    </div>
+    
+    <div class="flex">
+      <div class="bg-orange-500 h-8 w-8 text-center hover:bg-blue-500">
+        <img src="mail_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="">
+      </div>
+      <div>
+        <p>Email Us: <br>contact@foundershub.xyz</p>
+      </div>
+    </div>
+    
+    <div class="flex">
+      <div class="bg-orange-500 h-8 w-8 text-center hover:bg-blue-500">
+        <img src="schedule_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="">
+      </div>
+      <div>
+        <p>Opening Hours: <br>Mon-Fri: 8am - 5pm</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-green-500 shadow-xl p-10 leading-8">
+    <div>
+      <h1 class="font-bold text-xl ">Sign Up For Industry Alerts, News & insights</h1>
+      <input type="email" name="" id="" placeholder="Your Email Address" class=""> <br>
+      <button><a href="#">Subscribe</a></button>
+    </div>
+    
+  </div>
+
+</div> -->
+
+
+<!-- <div class="absolute flex justify-center items-center">
+  <div class="w-60 h-60 bg-blue-500">
+    <img src="web-marketing--v2.png" alt="">
+    <h1 class="font-bold font-sans text-lg text-white">Innovation Support</h1>
+  </div>
+  <div>
+    <img src="building-arrow.png" alt="">
+    <h1>Company Building</h1>
+  </div>
+  <div>
+    <img src="web-marketing--v2.png" alt="">
+    <h1>Market Access</h1>
+  </div>
+  <div>
+    <img src="web-marketing--v2.png" alt="">
+    <h1>Program Funding</h1>
+  </div>
+</div> -->
+
+<!-- <marquee behavior="scroll" direction="left">
+  <div class="w-full bg-gradient-to-r from-blue-600 to-orange-600 overflow-hidden">
+    <div class="whitespace-nowrap animate-marquee text-white py-3 text-lg font-semibold">
+      <span class="inline-block mx-10">✅ Design, Innovation & Incubation</span>
+      <span class="inline-block mx-10">🚀 Development of Early Stage Startupsheck out our services and programs</span>
+      <span class="inline-block mx-10">📣 Co-working and Flexible Workspaces</span>
+      <span class="inline-block mx-10">🌟 Community - Mentoring & Networks</span>
+      <span class="inline-block mx-10">🚀 Fund Raising</span>
+      <span class="inline-block mx-10">📣 Commercialisation & Acceleration</span>
+    </div>
+  </div>
+</marquee> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.onclick = () => mobileMenu.classList.toggle('hidden');
+
+  const slider = document.getElementById('slider');
+  const dots = document.querySelectorAll('.dot');
+  const totalSlides = slider.children.length;
+  let index = 0;
+
+  function showSlide(i) {
+    index = i;
+    slider.style.transform = `translateX(-${i * 100}%)`;
+    dots.forEach(dot => dot.classList.remove('opacity-100'));
+    dots[i].classList.add('opacity-100');
+  }
+
+  document.getElementById('nextBtn').onclick = () => {
+    index = (index + 1) % totalSlides;
+    showSlide(index);
+  };
+
+  document.getElementById('prevBtn').onclick = () => {
+    index = (index - 1 + totalSlides) % totalSlides;
+    showSlide(index);
+  };
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const i = parseInt(dot.getAttribute('data-slide'));
+      showSlide(i);
+    });
+  });
+
+  setInterval(() => {
+    index = (index + 1) % totalSlides;
+    showSlide(index);
+  }, 6000);
+
+  // window.addEventListener("scroll", () => {
+  //   const navbar = document.getElementById("navbar");
+  //   const navLinks = document.getElementById("navLinks");
+  //   const brand = document.getElementById("brand");
+  //   if (window.scrollY > 50) {
+  //     navbar.classList.add("bg-white", "shadow-md");
+  //     navLinks.classList.remove("text-white");
+  //     navLinks.classList.add("text-gray-800");
+  //     brand.classList.remove("text-white");
+  //     brand.classList.add("text-gray-900");
+  //   } else {
+  //     navbar.classList.remove("bg-white", "shadow-md");
+  //     navLinks.classList.remove("text-gray-800");
+  //     navLinks.classList.add("text-white");
+  //     brand.classList.remove("text-gray-900");
+  //     brand.classList.add("text-white");
+  //   }
+  // });
+</script>
+
+</body>
+</html> -->

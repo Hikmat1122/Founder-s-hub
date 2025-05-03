@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Static and Sliding Text with Images</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes slideFade {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      10%,
+      45% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      55%,
+      100% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+    }
+
+    .animate-one {
+      animation: slideFade 6s ease-in-out infinite;
+    }
+
+    .animate-two {
+      animation: slideFade 6s ease-in-out infinite;
+      animation-delay: 3s;
+    }
+
+    @keyframes fade-in {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fade-in 1s ease-out;
+    }
+  </style>
+</head>
+<body >
+
+  <div class="bg-gray-900 text-white h-screen flex items-center justify-center relative mb-20 ">
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-{#0C0950} backdrop-blur-sm transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html"><img src="logo-light.png" alt="" class="w-40"></a>
+        <div class="hidden md:flex space-x-6 items-center text-white" id="navLinks">
+          <a href="#" class=" animate-fade-in font-bold text-orange-600 hover:text-white-600">Home</a>
+          <a href="#" class=" animate-fade-in font-bold hover:text-blue-600">About Us</a>
+  
+          <!-- Dropdown - Services -->
+          <div class="relative group">
+            <button class=" animate-fade-in font-bold hover:text-blue-600 flex items-center space-x-1">
+              <span>Our Services</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="absolute animate-fade-in mt-10 hidden group-hover:block bg-white border rounded shadow-md w-60 text-gray-800">
+              <a href="#services" class="block px-4 py-2 hover:bg-gray-100">Founders Space</a>
+              <a href="#services" class="block px-4 py-2 hover:bg-gray-100">Inovation Consulting</a>
+            </div>
+          </div>
+  
+          <!-- Dropdown - Program -->
+          <div class="relative group">
+            <button class=" animate-fade-in font-bold hover:text-blue-600 flex items-center space-x-1">
+              <span>Program</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="absolute animate-fade-in left-0 mt-10 hidden group-hover:block bg-white border rounded shadow-md w-60 text-gray-800">
+              <a href="#program" class="block px-4 py-2 hover:bg-gray-100">Founders Insights</a>
+              <a href="#program" class="block px-4 py-2 hover:bg-gray-100">Founders Pitch</a>
+              <a href="#program" class="block px-4 py-2 hover:bg-gray-100">Founders Hatch</a>
+              <a href="#program" class="block px-4 py-2 hover:bg-gray-100">Founders School</a>
+            </div>
+          </div>
+  
+          <!-- Dropdown - Community -->
+          <div class="relative group">
+            <button class=" animate-fade-in font-bold hover:text-blue-600 flex items-center space-x-1">
+              <span>Community</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="absolute animate-fade-in left-0 mt-10 hidden group-hover:block bg-white border rounded shadow-md w-60 text-gray-800">
+              <a href="#program" class="block px-4 py-2 hover:bg-gray-100">Founders Network</a>
+              <a href="#program" class="block px-4 py-2 hover:bg-gray-100">Founders Update</a>
+              
+            </div>
+          </div>
+  
+          <a href="#contact" class="animate-fade-in font-bold hover:text-blue-600">Contact Us</a>
+        </div>
+  
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="menuBtn" class="focus:outline-none text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+  
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 space-y-2 bg-white text-gray-800">
+        <a href="#" class="block hover:text-blue-600">Home</a>
+        <a href="#" class="block hover:text-blue-600">About Us</a>
+        <a href="#services" class="block hover:text-blue-600">Services</a>
+        <a href="#program" class="block hover:text-blue-600">Program</a>
+        <a href="#community" class="block hover:text-blue-600">Community</a>
+        <a href="#contact" class="block hover:text-blue-600">Contact Us</a>
+      </div>
+  </nav>
+  
+    <section class="relative text-center flex items-center justify-center">
+      <!-- Static Text (Top of the Page) -->
+      <!-- <h2 class=" absolute top-0 left-1/2 transform -translate-x-1/2 text-3xl font-semibold ">
+        Connect, Innovate, Impact.
+      </h2> -->
+  
+      <!-- Sliding Texts with Images on the Left and Right -->
+      <div class="relative flex items-center justify-center">
+        <!-- Left Image -->
+        <!-- <img src="web-marketing--v2.png" alt="Left Image" class="absolute left-5 w-24 h-24 object-cover"> -->
+  
+        <!-- Animated Text 1 -->
+        <h1 class="absolute  flex items-center justify-center text-5xl font-bold animate-one ">
+          Building Innovation & Purpose-Driven Businesses!
+        </h1>
+  
+        <!-- Animated Text 2 -->
+        <h1 class="absolute flex items-center justify-center text-5xl font-bold animate-two">
+          A Community of Entrepreneurs, Leaders and Game Changers.
+        </h1>
+  
+        <!-- Right Image -->
+        <!-- <img src="https://via.placeholder.com/100" alt="Right Image" class="absolute right-5 w-24 h-24 object-cover"> -->
+      </div>
+    </section>
+  
+    <div class="absolute top-18 left-0 pb-20"><img src="african-american-businesswoman-sitting-table-cafe-black-girl-working-with-laptop.jpg" alt="" class="w-60 h-60 rounded-2xl  object-cover"></div>
+    <div class="absolute bottom-0 left-0 pb-10"><img src="group-afro-americans-working-together.jpg" alt="" class="w-80 rounded-2xl  object-cover"></div>
+    <div class="absolute top-18 left-64 pb-20"><img src="673b30b4-593a-4ab4-be9e-3b6f1ebd6910.jpg" alt="" class="w-40 h-40 rounded-2xl  object-cover"></div>
+    <div class="absolute bottom-0 left-64 pb-10"><img src="Free Laptop Mockup Design PSD.jpg" alt="" class="w-40 h-40 rounded-2xl  object-cover"></div>
+  
+    <div class="absolute top-18 right-0 pb-20"><img src="Photo by Desola Lanre-Ologun on Unsplash.jpg" alt="" class="w-60 h-60 rounded-2xl  object-cover"></div>
+    <div class="absolute bottom-0 right-0 pb-10"><img src="Photo excited black couple with laptop c….jpg" alt="" class="w-80 rounded-2xl  object-cover"></div>
+    <div class="absolute top-18 right-64 pb-20"><img src="Blog » Web Tech Experts - Page 2.jpg" alt="" class="w-40 h-40 rounded-2xl  object-cover"></div>
+    <div class="absolute bottom-0 right-64 pb-10"><img src="b87f3b8c-c273-41f3-93e4-78f5b1b27e6a.jpg" alt="" class="w-40 h-40 rounded-2xl  object-cover"></div>
+  
+  
+  </div>
+
+  <div class="flex justify-center p-12 gap-16 items-center " >
+    <div class="leading-8">
+      <p class="font-sans font-semibold text-orange-600">Building successful home-grown companies.</p>
+      <h1 class="font-serif text-black text-4xl font-bold">Committed To Building A More Sustainable And Inclusive Economy For The Future</h1>
+      <p class="font-sans font-semibold">You have an idea and struggling to know what to do next, you tried to attend various workshops, events, conferences and still not very clear what to do next. Are you a founder and want to understand your adjacent or new customers better so that you can build new products or services that will serve their needs better.
+          Get in touch to access leading resources for founders, mentorship, hands-on and well curated learning experience with standard frameworks, fundraising, advisory support, networking, events, careers, consulting etc.
+          The world is changing faster than ever before, Founders Hub NG is also investing and intensifying efforts at building our community amidst digital transformation and for the future of work.
+        </p>
+      <a href="#" class="inline-block px-6 py-3 bg-orange-600 text-white font-medium rounded-xl animate-pulse hover:bg-blue-700 transition-colors duration-300">
+        More About Us
+      </a>  
+    </div>
+
+    <div>
+      <img src="Backed By Spark Capital, Andela Will Develop A….jpg" alt="" width="4000px" class="rounded-2xl">
+    </div>
+  </div>
+
+  <div class="flex p-20">
+    <div class="flex justify-end gap-28">
+      <div class="">
+        <p class="font-sans font-semibold text-orange-600 ">The Premier Technology Innovation Hub in Ilorin.</p>
+        <h1 class="font-serif text-black text-4xl font-bold ">For startups & entrepreneurs looking for a flexible place to start their tech business in the heart of Ilorin!</h1>
+      </div>
+    
+      <div>
+        <h1 class=" text-blue-600 text-6xl font-bold">10<span>+</span></h1>
+        <p class="font-sans font-semibold">Tech Ecosystem Projects</p>
+      </div>
+    
+      <div>
+        <h1 class=" text-blue-600 text-6xl font-bold">15<span>+</span></h1>
+        <p class="font-sans font-semibold">Startups & Success Stories</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <marquee behavior="scroll" direction="left"> -->
+    <div class="grid grid-cols-3 gap-10 m-10 cursor-pointer ">
+      <div class="bg-grey-600 shadow-xl p-10 rounded-2xl w-100 text-base/8 ">
+        <h1 class="text-xl font-serif text-orange-600 font-bold">Virtual Office Space</h1>
+        <p class="font-sans text-lg">Our co-working space gives you a head start and ensure you get your name out there. </p>
+        <a href="#" class="relative inline-block mt-4 px-4 py-2 text-white font-semibold bg-blue-600 rounded-md overflow-hidden transition-all duration-300 group hover:bg-blue-700">
+          <span class="relative z-10">Read More </span>
+          <span class="absolute left-0 top-0 h-full w-0 bg-blue-800 group-hover:w-full transition-all duration-300 ease-in-out z-0"></span>
+        </a>
+      </div>
+  
+      <div class="bg-grey-600 shadow-xl p-10 rounded-2xl w-100 text-base/8">
+        <h1 class="font-bold font-serif text-orange-600 text-xl ">Wiki Lite Open Space</h1>
+        <p class="font-sans text-lg">Got a great idea you want to see realised? Everything you need is under one roof. </p>
+        <a href="#" class="relative inline-block mt-4 px-4 py-2 text-white font-semibold bg-blue-600 rounded-md overflow-hidden transition-all duration-300 group hover:bg-blue-700">
+          <span class="relative z-10">Read More </span>
+          <span class="absolute left-0 top-0 h-full w-0 bg-blue-800 group-hover:w-full transition-all duration-300 ease-in-out z-0"></span>
+        </a>      
+      </div>
+  
+      <div class="bg-grey-600 shadow-xl p-10 rounded-2xl w-100 text-base/8">
+        <h1 class="font-bold font-serif text-orange-600 text-xl ">Wiki (Open Office)</h1>
+        <p class="font-sans text-lg">We offer a nurturing and supportive space that encourages collaboration from which  to grow. </p>
+        <a href="#" class="relative inline-block mt-4 px-4 py-2 text-white font-semibold bg-blue-600 rounded-md overflow-hidden transition-all duration-300 group hover:bg-blue-700">
+          <span class="relative z-10">Read More </span>
+          <span class="absolute left-0 top-0 h-full w-0 bg-blue-800 group-hover:w-full transition-all duration-300 ease-in-out z-0"></span>
+        </a>
+      </div>
+  
+      <div class="bg-grey-600 shadow-xl p-10 rounded-2xl w-100 text-base/8">
+        <h1 class="font-bold font-serif text-orange-600 text-xl ">Conference Room</h1>
+        <p class="font-sans text-lg">We strive to create a workspace free of distractions, allowing for the increased productivity and foster creativity and innovation.</p>
+        <a href="#" class="relative inline-block mt-4 px-4 py-2 text-white font-semibold bg-blue-600 rounded-md overflow-hidden transition-all duration-300 group hover:bg-blue-700">
+          <span class="relative z-10">Read More </span>
+          <span class="absolute left-0 top-0 h-full w-0 bg-blue-800 group-hover:w-full transition-all duration-300 ease-in-out z-0"></span>
+        </a>
+      </div>
+  
+      <div class="bg-grey-600 shadow-xl p-10 rounded-2xl w-100 text-base/8">
+        <h1 class="font-bold font-serif text-orange-600 text-xl ">Hot Desk Pro. (Open Office)</h1>
+        <p class="font-sans text-lg">Our flexible plans accommodate individuals entrepreneurs, teams and early-stage startups within a supportive community.</p>
+        <a href="#" class="relative inline-block mt-4 px-4 py-2 text-white font-semibold bg-blue-600 rounded-md overflow-hidden transition-all duration-300 group hover:bg-blue-700">
+          <span class="relative z-10">Read More </span>
+          <span class="absolute left-0 top-0 h-full w-0 bg-blue-800 group-hover:w-full transition-all duration-300 ease-in-out z-0"></span>
+        </a>
+      </div>
+  
+      <!-- <div class="bg-grey-600 shadow-xl p-10 rounded-2xl w-100 text-base/8">
+        <h1 class="font-bold font-serif text-orange-600 text-xl ">Shared Desk</h1>
+        <p class="font-sans text-lg">Founders space is designed for business convenience; stable power supply and serene enviornment and high speed WI-FI.</p>
+        <a href="#" class="relative inline-block mt-4 px-4 py-2 text-white font-semibold bg-blue-600 rounded-md overflow-hidden transition-all duration-300 group hover:bg-blue-700">
+          <span class="relative z-10">Read More </span>
+          <span class="absolute left-0 top-0 h-full w-0 bg-blue-800 group-hover:w-full transition-all duration-300 ease-in-out z-0"></span>
+        </a>
+      </div> -->
+  
+      <div class="bg-grey-600 shadow-xl p-10 rounded-2xl w-100 text-base/8">
+        <h1 class="font-bold font-serif text-orange-600 text-xl ">Open Space & Pro</h1>
+        <p class="font-sans text-lg">We provide a healthy and creative workspace for events and support services to foster connections with networks of like-minds.</p>
+        <a href="#" class="relative inline-block mt-4 px-4 py-2 text-white font-semibold bg-blue-600 rounded-md overflow-hidden transition-all duration-300 group hover:bg-blue-700">
+          <span class="relative z-10">Read More </span>
+          <span class="absolute left-0 top-0 h-full w-0 bg-blue-800 group-hover:w-full transition-all duration-300 ease-in-out z-0"></span>
+        </a>
+      </div>
+    
+    </div>
+  </marquee>
+
+  <!-- <div class="flex">
+    <div class="relative ">
+      <img src="African student study online computer _ Premium… (1).jpg" alt="" class=" rounded-xl ">
+    </div>
+    <div class="absolute">
+      <h1>5<br>Years of Experience</h1>
+    </div>
+    <div class="absolute">
+      <h1>We Are Building On Our Past And Prepared For The Future.</h1>
+      <p>The hub is an active nexus where tech ecosystem players converge. Our strong network focuses on offering a unique ecosystem where resources, inspiration and collaboration opportunities intersect with emerging technologies, creating shared value and building viable globally-oriented businesses in Africa! with a special focus on research, technology strategy, data, creativity, innovation, growth, business development, social change and sustainability.</p>
+    </div>
+    
+  </div> -->
+
+  <div class="bg-gradient-to-r from-blue-800 to-orange-800 p-10">
+    <p class="font-sans font-semibold text-orange-600 ">Connect, Innovate, Impact! </p>
+    <h1 class="font-serif text-white text-4xl font-bold ">Building Innovative & purpose-diven <br>businesses within vibrant communities.</h1>
+    <div class="flex justify-between">
+      <div class="border-4 p-10 mt-10 cursor-pointer border-double hover:bg-orange-600">
+        <img src="laptop-closing.png" alt="">
+        <p class="font-serif text-white text-xl font-bold">Innovation Support</p>
+      </div>
+      <div class="border-4 p-10 mt-10 cursor-pointer border-double hover:bg-orange-600">
+        <img src="building-arrow.png" alt="">
+        <p class="font-serif text-white text-xl font-bold">Company Building</p>
+      </div>
+      <div class="border-4 p-10 mt-10 cursor-pointer border-double hover:bg-orange-600">
+        <img src="web-marketing--v2.png" alt="">
+        <p class="font-serif text-white text-xl font-bold">Marketing Access</p>
+      </div>
+      <div class="border-4 p-10 mt-10 cursor-pointer border-double hover:bg-orange-600">
+        <img src="account_balance_wallet_40dp_000000_FILL0_wght400_GRAD0_opsz40.png" alt="" width="70px">
+        <p class="font-serif text-white text-xl font-bold">Program Funding</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="bg-{#161179}">
+    <footer class="flex pl-10 pt-10 justify-start items-center">
+      <img src="logo-light 2.png" alt="" width="300px">
+      <div>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Sitemap</a>
+        <a href="#">Employee Login</a>
+        <br><a href="#">&copy; 2025 Founders Hub NG. ♥ by codeSquad LLC</a>
+      </div>
+
+      <!-- <div>
+        <div class="rounded-full ">1</div>
+        <div>2</div>
+        <div>2</div>
+      </div> -->
+    </footer>
+  </div>
+  
+  
+  
+  
+  <!-- <a href="#" class="inline-block px-6 py-3 border-2 border-yellow-500 text-yellow-500 font-bold rounded-lg transition-all duration-300 hover:bg-yellow-500 hover:text-white">
+    Border Fill
+  </a> -->
+
+  
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Static and Sliding Text with Images</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes slideFade {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      10%,
+      45% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      55%,
+      100% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+    }
+
+    .animate-one {
+      animation: slideFade 6s ease-in-out infinite;
+    }
+
+    .animate-two {
+      animation: slideFade 6s ease-in-out infinite;
+      animation-delay: 3s;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white h-screen flex items-center justify-center">
+
+  <section class="relative text-center flex items-center justify-center">
+    <!-- Static Text (Top of the Page) -->
+    <h2 class="absolute top-10 left-1/2 transform -translate-x-1/2 text-3xl font-semibold z-10">
+      Static Text Above the Animation
+    </h2>
+
+    <!-- Sliding Texts with Images on the Left and Right -->
+    <div class="relative flex items-center justify-center">
+      <!-- Left Image -->
+      <img src="web-marketing--v2.png" alt="Left Image" class="absolute left-5 w-24 h-24 object-cover">
+
+      <!-- Animated Text 1 -->
+      <h1 class="absolute inset-0 flex items-center justify-center text-5xl font-bold animate-one">
+        Welcome to Our Site
+      </h1>
+
+      <!-- Animated Text 2 -->
+      <h1 class="absolute inset-0 flex items-center justify-center text-5xl font-bold animate-two">
+        Discover More With Us
+      </h1>
+
+      <!-- Right Image -->
+      <img src="https://via.placeholder.com/100" alt="Right Image" class="absolute right-5 w-24 h-24 object-cover">
+    </div>
+  </section>
+
+</body>
+</html>

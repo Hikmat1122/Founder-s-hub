@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Site</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="font-sans">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 shadow" style="background-color: #0C0950;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0 text-white text-xl font-bold">Logo</div>
+        <div class="hidden md:flex space-x-6 text-white">
+          <div class="group relative">
+            <a href="#" class="hover:text-blue-400">Services</a>
+            <div class="absolute mt-2 bg-white rounded shadow-md hidden group-hover:block z-10 w-40">
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Web Development</a>
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Graphic Design</a>
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Printing</a>
+            </div>
+          </div>
+          <a href="#" class="hover:text-blue-400">Community</a>
+          <a href="#" class="hover:text-blue-400">About</a>
+        </div>
+        <!-- Mobile menu button -->
+        <button id="menuBtn" class="md:hidden text-white focus:outline-none">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white text-black">
+      <a href="#" class="block px-4 py-2">Services</a>
+      <a href="#" class="block px-4 py-2">Community</a>
+      <a href="#" class="block px-4 py-2">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-24 min-h-screen bg-gradient-to-br from-blue-900 to-purple-800 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-4">Build your Dream</h1>
+          <p class="text-lg md:text-xl mb-6">We help businesses build powerful websites, standout graphics, and custom printing.</p>
+          <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-xl shadow">
+            Get Started
+          </button>
+        </div>
+        <div class="relative">
+          <!-- Decorative images (optional: hidden on small screens) -->
+          <div class="absolute top-0 left-0 hidden md:block">
+            <img src="https://i.ibb.co/CmRtnhx/s1.png" class="w-40 md:w-64" alt="Design" />
+          </div>
+          <div class="absolute top-0 right-0 hidden md:block">
+            <img src="https://i.ibb.co/HxpGs1r/s5.png" class="w-32 md:w-48" alt="Code" />
+          </div>
+          <div class="absolute bottom-0 left-12 hidden md:block">
+            <img src="https://i.ibb.co/QfXbGLc/s2.png" class="w-28 md:w-44" alt="Print" />
+          </div>
+          <div class="absolute bottom-0 right-12 hidden md:block">
+            <img src="https://i.ibb.co/cFx3tZc/s3.png" class="w-28 md:w-44" alt="Launch" />
+          </div>
+          <!-- Main Illustration -->
+          <img src="https://i.ibb.co/4p0tPCf/s4.png" class="w-full md:w-[25rem] mx-auto relative z-10" alt="Main Hero" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Services -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Our Services</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-100 p-6 rounded-xl shadow">
+          <h3 class="text-xl font-semibold mb-2">Web Development</h3>
+          <p class="text-gray-600">Custom websites that are fast, secure, and responsive.</p>
+        </div>
+        <div class="bg-gray-100 p-6 rounded-xl shadow">
+          <h3 class="text-xl font-semibold mb-2">Graphic Design</h3>
+          <p class="text-gray-600">Professional branding, logos, and visuals for your business.</p>
+        </div>
+        <div class="bg-gray-100 p-6 rounded-xl shadow">
+          <h3 class="text-xl font-semibold mb-2">Printing</h3>
+          <p class="text-gray-600">High-quality prints on shirts, flyers, posters, and more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JS for mobile menu toggle -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
